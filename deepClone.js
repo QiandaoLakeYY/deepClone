@@ -1,6 +1,7 @@
 // for (let j = 0,len = arr.length; j < len; j++)
 function deepClone (originVal) {
-	let temp = {}
+	let temp = originVal instanceof Array ? [] : {}
+
 	for (let item in originVal) {
 		if (isReferenceType(originVal[item])) {
 			temp[item] = deepClone(originVal[item])
@@ -8,7 +9,6 @@ function deepClone (originVal) {
 			temp[item] = originVal[item]
 		}
 	}
-	temp.constructor = tempConstructor
 	return temp
 }
 
